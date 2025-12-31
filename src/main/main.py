@@ -30,10 +30,10 @@ def main():
     )''')
 
     # You will implement these methods below. They just print TO-DO messages for now.
-    load_and_clean_users('../../resources/users.csv')
-    load_and_clean_call_logs('../../resources/callLogs.csv')
-    write_user_analytics('../../resources/userAnalytics.csv')
-    write_ordered_calls('../../resources/orderedCalls.csv')
+    load_and_clean_users('resources/users.csv')
+    load_and_clean_call_logs('resources/callLogs.csv')
+    write_user_analytics('resources/userAnalytics.csv')
+    write_ordered_calls('resources/orderedCalls.csv')
 
     # Helper method that prints the contents of the users and callLogs tables. Uncomment to see data.
     # select_from_users_and_call_logs()
@@ -133,7 +133,7 @@ def write_user_analytics(csv_file_path):
 # Then, write the ordered callLogs to orderedCalls.csv
 def write_ordered_calls(csv_file_path):
     cursor.execute("""
-        SELECT phoneNumber, startTime, endTime, direction, userId
+        SELECT callId, phoneNumber, startTime, endTime, direction, userId
         FROM callLogs
         ORDER BY userId, startTime
     """)
@@ -142,10 +142,18 @@ def write_ordered_calls(csv_file_path):
 
     with open(csv_file_path, 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['phoneNumber', 'startTime', 'endTime', 'direction', 'userId'])
+        writer.writerow([
+            'callId',
+            'phoneNumber',
+            'startTime',
+            'endTime',
+            'direction',
+            'userId'
+        ])
 
         for row in rows:
             writer.writerow(row)
+
 
 
 
