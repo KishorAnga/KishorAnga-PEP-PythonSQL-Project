@@ -72,3 +72,26 @@ Note - by specifying IDs as primary keys, the id value should auto-increment for
 
 *General note - each of these functions take a "file_path" parameter. You will not need to edit this variable, but it will be used to accomplish each implementation. See main() for an example of the function invocations with file paths from /resources.
 
+
+## How to Run
+
+### Prerequisites
+- Python 3 installed
+- GitHub Codespaces or local terminal
+
+### Steps to Run the Application
+1. Open a terminal in the project root directory
+2. Run the main application:
+   python src/main/main.py
+
+
+### Steps to Run Unit Tests
+1. From the project root directory, run:
+   python -m unittest src/test/lab_test.py
+
+
+### Expected Output
+- The application will generate the following files in the `resources/` folder:
+- `userAnalytics.csv`
+- `orderedCalls.csv`
+- All unit tests should pass successfully.
